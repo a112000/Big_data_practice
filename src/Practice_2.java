@@ -14,7 +14,7 @@ public class Practice_2 {
         System.out.println("Enter the n-value = number of words.");
         Scanner myObj = new Scanner(System.in);
         s = myObj.nextLine();
-        try {
+        try { // Проверка, что пользователь ввел целое число
             n = Integer.parseInt(s);
         }
         catch (NumberFormatException e) {
@@ -28,17 +28,17 @@ public class Practice_2 {
 
         if (!(n==0)) {
             System.out.println("Enter " + n + " words divided by ' '.");
-            words = myObj.nextLine();
-            strArray = words.split(" ");
+            words = myObj.nextLine(); // Считывание n слов, разделенных пробелами
+            strArray = words.split(" "); // Запись слов в массив
         }
         for (String curr_element: strArray) {
-            curr_diff_symb = (int)strArray[i].chars().distinct().count();
-            if (i == 0) {
+            curr_diff_symb = (int)strArray[i].chars().distinct().count(); // Подсчет числа различных символов в элементе массива
+            if (i == 0) { // Для первой итерации - первое слово с наименьшим числом различных символов
                 num_diff_symb = curr_diff_symb;
                 word_min_diff_symb = strArray[i];
             }
             else {
-                if (curr_diff_symb < num_diff_symb) {
+                if (curr_diff_symb < num_diff_symb) { // Если нашли слово, в котором меньше различных символов
                     num_diff_symb = curr_diff_symb;
                     word_min_diff_symb = strArray[i];
                 }
@@ -53,7 +53,7 @@ public class Practice_2 {
                 "/// Variant 1, Task num.5: latin symbols ///" +
                 "////////////////////////////////////////////");
         System.out.println("Enter the n-value = number of words.");
-        s = myObj.nextLine();
+        s = myObj.nextLine(); // Повторение из предыдущего задания
         try {
             n = Integer.parseInt(s);
         }
@@ -72,15 +72,15 @@ public class Practice_2 {
 
         if (!(n==0)) {
             System.out.println("Enter " + n + " words divided by ' '.");
-            words = myObj.nextLine();
+            words = myObj.nextLine(); // Как в предыдущем задании
             strArray = words.split(" ");
         }
         i_plus_one = 1;
-        for (int j = 0; j < n; j++) {
+        for (int j = 0; j < n; j++) { // Перебор всех слов
             string_not_latin = strArray[j];
-            chars_not_latin = string_not_latin.toCharArray();
+            chars_not_latin = string_not_latin.toCharArray(); // Перевод слова в массив символов
             isLatin = true;
-            for (int t = 0; t < chars_not_latin.length; t++) {
+            for (int t = 0; t < chars_not_latin.length; t++) { // Проверка, что в слове только латинские буквы
                 if (!(new String(glasn).contains(String.valueOf(chars_not_latin[t]))) & !(new String(sogl).contains(String.valueOf(chars_not_latin[t])))) {
                     isLatin = false;
                 }
@@ -101,21 +101,22 @@ public class Practice_2 {
             sogl_num = 0;
             glasn_num = 0;
             latin_word = str_array_latin[j];
-            chars_latin = latin_word.toCharArray();
+            chars_latin = latin_word.toCharArray(); // Перевод в массив букв
             for (int t = 0; t < latin_word.length(); t++) {
-                if (new String(glasn).contains(String.valueOf(chars_latin[t]))) {
+                if (new String(glasn).contains(String.valueOf(chars_latin[t]))) { // Проверка - гласный ли звук
                     glasn_num++;
                 }
-                if (new String(sogl).contains(String.valueOf(chars_latin[t]))) {
+                if (new String(sogl).contains(String.valueOf(chars_latin[t]))) { // Проверка - согласный ли звук
                     sogl_num++;
                 }
             }
-            if (glasn_num == sogl_num) {
+            if (glasn_num == sogl_num) { // Проверка равенства гласных и согласных звуков
                 words_equal_number++;
             }
         }
         System.out.println("Number of words with equal sogl and glasn: " + words_equal_number);
 
+        // Вывод фамилии, даты получения задания, даты выполнения задания в формате Date, как на писано в задании
         System.out.println("Bychkov");
         System.out.println("20.01.2023 13:00");
         Date complete_date = new Date(1677319200000L);
@@ -137,7 +138,7 @@ public class Practice_2 {
             return;
         }
 
-        double[][] matrix = new double[n][n];
+        double[][] matrix = new double[n][n]; // Определение пустого квадратного массива
         Random r = new Random();
         boolean first_pos = false, second_pos = false;
         double elements_sum = 0;
@@ -146,9 +147,9 @@ public class Practice_2 {
             first_pos = false;
             second_pos = false;
             for (int t = 0; t < matrix[j].length; t++) {
-                matrix[j][t] = -n + r.nextDouble() * (n - (-n));
+                matrix[j][t] = -n + r.nextDouble() * (n - (-n)); // Генерация вещественного числа в диапазоне от -n до n
                 System.out.println(matrix[j][t]);
-                if (matrix[j][t]>0) {
+                if (matrix[j][t]>0) { // Нахождение первого и последнего положительного числа среди элементов каждой строки
                     if (first_pos == false) {
                         first_pos = true;
                     }
@@ -156,7 +157,7 @@ public class Practice_2 {
                         second_pos = true;
                     }
                 }
-                if (matrix[j][t]<0) {
+                if (matrix[j][t]<0) { // Поиск и суммирование отрицательных чисел каждой строки
                     if (first_pos == true & second_pos == false) {
                         elements_sum = elements_sum + matrix[j][t];
                     }
@@ -180,7 +181,7 @@ public class Practice_2 {
 
         for(int j=0; j<n ; j++){
             for(int t=0; t<n ; t++){
-                transposed[j][t]=matrix[t][j];
+                transposed[j][t]=matrix[t][j]; // Транспонирование
             }
         }
         System.out.println("The transposed matrix: ");

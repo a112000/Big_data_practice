@@ -8,26 +8,26 @@ public class Practice_1 {
                 "////////////////////////////////////////////");
         String true_pass = "12345superpassword";
         System.out.println("Enter password");
-        Scanner myObj = new Scanner(System.in);
+        Scanner myObj = new Scanner(System.in); // Пользователь пробует ввести верный пароль
         String pass = myObj.nextLine();
         if (pass.equals(true_pass)) {
-            System.out.println("Right password");
+            System.out.println("Right password"); // Если введенный пароль совпадает с заданным - соответствующее сообщение
         }
         else {
-            System.out.println("Wrong password");
+            System.out.println("Wrong password"); // Если пароль не совпадает с заданным - соответствующее сообщение
         }
 
 
         System.out.println("////////////////////////////////////////////" +
                 "/// Variant 1, Task num.5: integers task ///" +
                 "////////////////////////////////////////////");
-        int int_sum = 0;
-        int int_mult = 1;
+        int int_sum = 0; // Если параметров нет - сумма равна 0
+        int int_mult = 1; // Если параметров нет - произведение равно 1
         int curr_num;
         for (String s: args) {
             System.out.println("Enter the integer number for the parameter named '" + s + "'.");
-            s = myObj.nextLine();
-            try {
+            s = myObj.nextLine(); // Считывается введенное пользователем значение очередного параметра
+            try { // Проверка, что введенное значение - целое число
                 curr_num = Integer.parseInt(s);
             }
             catch (NumberFormatException e) {
@@ -47,8 +47,8 @@ public class Practice_1 {
         int n;
         String s;
         System.out.println("Enter the n-value = length of the array.");
-        s = myObj.nextLine();
-        try {
+        s = myObj.nextLine(); // Считывание введенной пользователем длины массива
+        try { // Проверка, что пользователь ввел целое число
             n = Integer.parseInt(s);
         }
         catch (NumberFormatException e) {
@@ -59,8 +59,8 @@ public class Practice_1 {
         int i = 0;
         for (int curr_element: intArray) {
             System.out.println("Enter integer array element with index " + i + ".");
-            s = myObj.nextLine();
-            try {
+            s = myObj.nextLine(); // Считывание введенного пользователем очередного элемента массива
+            try { // Проверка, что пользователь ввел целое число
                 intArray[i] = Integer.parseInt(s);
             }
             catch (NumberFormatException e) {
@@ -72,7 +72,7 @@ public class Practice_1 {
         System.out.println("Numbers in array, divisible by 5, 7:");
         for (int curr_element: intArray) {
             if ((curr_element % 5 == 0) & (curr_element % 7 == 0)) {
-                System.out.println(curr_element);
+                System.out.println(curr_element); // Вывод элементов массива, которые делятся на 5 и 7 без остатка
             }
         }
         System.out.println(" ");
@@ -82,10 +82,10 @@ public class Practice_1 {
                 "///////////////////////////////////////////");
         boolean is_sorted = false;
         int a;
-        while(!is_sorted) {
+        while(!is_sorted) { // Цикл кончается, когда все элементы отсортированы
             is_sorted = true;
             for (int j = 0; j < intArray.length-1; j++) {
-                if(Math.abs(intArray[j]) < Math.abs(intArray[j+1])){
+                if(Math.abs(intArray[j]) < Math.abs(intArray[j+1])){ // Сортировка по модулю
                     is_sorted = false;
                     a = intArray[j];
                     intArray[j] = intArray[j+1];
